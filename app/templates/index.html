@@ -3,12 +3,12 @@
 <head>
 	<title>Diffuser</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
 </head>
 <body>
 	<table>
 		<tr>
-			<td style='width: 30%;'><img src='images/newapp-icon.png'>
+            <td style='width: 30%;'><img src='{{ url_for("static", filename="images/newapp-icon.png") }}'>
 			</td>
 			<td>
 				<h1 id = "message">Diffuser</h1>

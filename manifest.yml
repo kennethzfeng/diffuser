@@ -3,7 +3,7 @@ applications:
   buildpack: python_buildpack
   host: diffuser-2015
   name: diffuser-2015
-  path: .
+  path: app
   domain: mybluemix.net
   instances: 1
   memory: 128M
