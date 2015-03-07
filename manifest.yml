@@ -1,0 +1,9 @@
+applications:
+- disk_quota: 1024M
+  buildpack: python_buildpack
+  host: diffuser-2015
+  name: diffuser-2015
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 128M
