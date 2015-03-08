@@ -4,6 +4,6 @@ applications:
   host: diffuser-2015
   name: diffuser-2015
   path: .
-  domain: mybluemix.net
+  domain: eu-gb.mybluemix.net
   instances: 1
   memory: 128M
