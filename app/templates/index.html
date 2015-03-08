@@ -1,13 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Diffuser</h1>
-<div class="col-xs-12">
+<div class="col-xs-6">
     <p>Recommendation:</p>
 
     <p>Please go to Starbucks Union Square</p>
 
     Nearby Locations:
     <div id="map-canvas">
+    </div>
+</div>
+
+
+<div class="col-xs-6">
+    <h2>Crowd Poll:</h2>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            Rate this Place
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Jam Packed</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Crowded</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dispersed</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Spaceous</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Empty</a></li>
+        </ul>
     </div>
 </div>
 
