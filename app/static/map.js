@@ -1,6 +1,35 @@
+/**
+ * Get Current Location
+ */
+function displayPosition(position) {
+  console.log("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+
+  initialize({"latitude": position.coords.latitude, "longitude": position.coords.longitude});
+}
+
+function displayError(error) {
+  var errors = { 
+    1: 'Permission denied',
+    2: 'Position unavailable',
+    3: 'Request timeout'
+  };
+  alert("Error: " + errors[error.code]);
+}
+
+if (navigator.geolocation) {
+  var timeoutVal = 10 * 1000 * 1000;
+  navigator.geolocation.getCurrentPosition(
+    displayPosition, 
+    displayError,
+    { enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+  );
+}
+else {
+  alert("Geolocation is not supported by this browser");
+}
+
 var directionsDisplay;
 var map;
-
 var locations = [
   { 
     "id": 5,
@@ -36,6 +65,7 @@ var marker, i;
 
 function plotLocations(locations, map) {
   var location;
+
   for (i = 0; i < locations.length; i++) {
     location = locations[i];
 
@@ -57,10 +87,21 @@ function plotLocations(locations, map) {
   }
 }
 
-function initialize() {
+function initialize(coordinate) {
+  var a = {
+    "latitude": 40.7033127,
+    "longitude": -73.979681
+  };
+
+  if (coordinate) {
+    a = coordinate;
+  }
+
+  console.log(a);
+
   map = new google.maps.Map(document.getElementById('map-canvas'), {
-    zoom: 10,
-    center: new google.maps.LatLng(40.7033127,-73.979681),
+    zoom: 12,
+    center: new google.maps.LatLng(a.latitude, a.longitude),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
