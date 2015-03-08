@@ -2,10 +2,6 @@
     <h2>Crowd Poll:</h2>
     <h3>Rate this Place</h3>
     <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default">Jam Packed</button>
-        <button type="button" class="btn btn-default">Crowded</button>
-        <button type="button" class="btn btn-default">Dispersed</button>
-        <button type="button" class="btn btn-default">Spaceous</button>
-        <button type="button" class="btn btn-default">Empty</button>
+        <button type="button" class="btn btn-default" ng-repeat="rating in ratings">{{ rating }}</button>
     </div>
 </div>
