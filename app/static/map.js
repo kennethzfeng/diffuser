@@ -58,13 +58,39 @@ var locations = [
   }
 ];
 
+var crowdData = [
+  {
+    "time": "2015-03-08T15:00:00Z", 
+    "locations": {
+      "1": 3,
+      "2": 2,
+      "3": 5,
+      "4": 1,
+      "5": 2
+    }
+  }
+];
+
 
 var infowindow = new google.maps.InfoWindow();
 
 var marker, i;
 
+var markers = [];
+
 function plotLocations(locations, map) {
   var location;
+
+  var popInfoWindow = function(marker, location) {
+      return function () {
+        var contentString = "<div>" + 
+              "<p><b>" + location.name + "</b></p>" + 
+              "<p>Crowd Level: " + mostRecentData[location.id] + "</p>" +
+              "</div>";
+        infowindow.setContent(contentString);
+        infowindow.open(map, marker);
+      };
+  };
 
   for (i = 0; i < locations.length; i++) {
     location = locations[i];
@@ -74,17 +100,15 @@ function plotLocations(locations, map) {
       map: map
     });
 
-    google.maps.event.addListener(marker, 'click', (function (marker, i) {
-      return function () {
-        var contentString = "<div>" + 
-              "<h2>" + location.name + "</h2>" + 
-              "<h1>Crowd: 10</h1>" +
-              "</div>";
-        infowindow.setContent(contentString);
-        infowindow.open(map, marker);
-      };
-    })(marker, i));
+    markers.push(marker);
+
+    var mostRecentData = crowdData[0].locations;
+
+    google.maps.event.addListener(marker, 'click', popInfoWindow(marker, location));
   }
+
+  // Open the least crowded one
+  popInfoWindow(markers[0], locations[0])();
 }
 
 function initialize(coordinate) {
