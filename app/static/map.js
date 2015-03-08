@@ -46,7 +46,11 @@ function plotLocations(locations, map) {
 
     google.maps.event.addListener(marker, 'click', (function (marker, i) {
       return function () {
-        infowindow.setContent(location.name);
+        var contentString = "<div>" + 
+              "<h2>" + location.name + "</h2>" + 
+              "<h1>Crowd: 10</h1>" +
+              "</div>";
+        infowindow.setContent(contentString);
         infowindow.open(map, marker);
       };
     })(marker, i));
